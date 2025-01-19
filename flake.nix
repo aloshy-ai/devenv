@@ -11,7 +11,7 @@
       flake = false;
     };
   };
-  outputs = { self, ... } @ inputs:
+  outputs = { self, nixpkgs, flake-utils, ... } @ inputs:
     let
       systems = [
         "x86_64-linux"
