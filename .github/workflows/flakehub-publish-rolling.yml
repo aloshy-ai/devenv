@@ -16,5 +16,5 @@ jobs:
         with:
           name: "aloshy-ai/devenv"
           rolling: true
-          visibility: "Public"
+          visibility: "public"
           include-output-paths: true
