@@ -226,12 +226,5 @@
             }
           ];
         };
-
-        # For compatibility with older nix-shell
-        legacyPackages = {
-          devenv-up = pkgs.writeShellScriptBin "devenv-up" ''
-            exec process-compose up
-          '';
-        };
       }));
 }
