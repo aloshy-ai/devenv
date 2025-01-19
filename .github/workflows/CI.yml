@@ -34,7 +34,6 @@ jobs:
       - name: Initialize flake
         run: |
           if [ ! -f flake.lock ]; then
-            nix flake init
             nix flake update
             
             # Stage the lock file if it was created
@@ -43,9 +42,6 @@ jobs:
               git commit -m "chore: initialize flake.lock [skip ci]"
             fi
           fi
-      
-      - name: Check flake inputs
-        run: nix flake check
       
       - name: Check flake inputs
         run: nix flake check
