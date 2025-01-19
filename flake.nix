@@ -101,17 +101,7 @@
           ];
 
           languages = {
-            typescript = {
-              enable = true;
-              package = pkgs.typescript;
-            };
             javascript.enable = true;
-            markdown = {
-              enable = true;
-              package = pkgs.markdownlint-cli;
-            };
-            sql.enable = true;
-            yaml.enable = true;
           };
 
           services.docker = {
