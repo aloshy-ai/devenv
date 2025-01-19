@@ -100,11 +100,6 @@
             javascript.enable = true;
           };
 
-          services.docker = {
-            enable = true;
-            package = pkgs.docker;
-          };
-
           scripts = {
             setup.exec = ''
               if [ ! -f .envrc ]; then
