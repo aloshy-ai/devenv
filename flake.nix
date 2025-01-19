@@ -106,7 +106,6 @@
               package = pkgs.typescript;
             };
             javascript.enable = true;
-            html.enable = true;
             markdown = {
               enable = true;
               package = pkgs.markdownlint-cli;
