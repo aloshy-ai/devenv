@@ -22,7 +22,7 @@ jobs:
       - uses: "DeterminateSystems/nix-installer-action@main"
       - uses: "DeterminateSystems/flakehub-push@main"
         with:
-          visibility: "public"
+          visibility: "unlisted"
           name: "aloshy-ai/devenv"
           tag: "${{ inputs.tag }}"
           include-output-paths: true
