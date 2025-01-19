@@ -27,7 +27,7 @@
           config.allowUnfree = true;
         };
 
-        processComposeConfig = {
+        devenvConfig = {
           processes = {
             supabase = {
               command = "supabase start";
@@ -83,10 +83,6 @@
               };
             };
           };
-        };
-
-        devenvConfig = {
-          processes = processComposeConfig.processes;
 
           packages = with pkgs; [
             bun               # Modern JavaScript runtime and package manager
@@ -193,9 +189,6 @@
           inherit inputs pkgs;
           modules = [
             devenvConfig
-            {
-              process-compose = processComposeConfig;
-            }
           ];
         };
       });
