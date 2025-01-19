@@ -218,13 +218,13 @@
 
       in {
         devShell = devenv.lib.mkShell {
-          inherit inputs pkgs;
-          modules = [
-            devenvConfig
-            {
-              process-compose = processComposeConfig;
-            }
-          ];
-        };
+  inherit pkgs;  # Only inherit pkgs
+  modules = [
+    devenvConfig
+    {
+      process-compose = processComposeConfig;
+    }
+  ];
+};
       }));
 }
