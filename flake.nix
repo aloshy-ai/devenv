@@ -20,14 +20,7 @@
         "aarch64-darwin"
       ];
     in
-    {
-      metadata = {
-        title = "NextJS Supabase Devenv";
-        url = "https://github.com/aloshy-ai/devenv";
-        authors = [ "aloshy.🅰🅸" ];
-        license = "MIT";
-      };
-    } // (flake-utils.lib.eachSystem systems (system:
+    flake-utils.lib.eachSystem systems (system:
       let
         pkgs = import nixpkgs {
           inherit system;
@@ -163,21 +156,15 @@
           };
 
           env = {
-            # Supabase
             NEXT_PUBLIC_SUPABASE_URL = "http://localhost:54321";
             NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn[...]";
             SUPABASE_SERVICE_ROLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn[...]";
-            
-            # NextJS
             NEXT_TELEMETRY_DISABLED = "1";
             NODE_ENV = "development";
-            
-            # Inngest
             INNGEST_EVENT_KEY = "local";
             INNGEST_SIGNING_KEY = "";
           };
 
-          # Pre-commit hooks
           pre-commit.hooks = {
             nixpkgs-fmt.enable = true;
             prettier.enable = true;
@@ -185,7 +172,6 @@
             markdownlint.enable = true;
             typo-check.enable = true;
             
-            # Custom hooks for environment validation
             local = {
               enable = true;
               entry = "${pkgs.writeScript "check-env" ''
@@ -199,7 +185,6 @@
             };
           };
 
-          # Shell welcome message
           enterShell = ''
             echo "🚀 NextJS Development Environment Ready!"
             echo ""
@@ -226,6 +211,5 @@
             }
           ];
         };
-      };
-    };
+      });
 }
