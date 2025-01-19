@@ -1,5 +1,5 @@
 {
-  description = "aloshy.🅰🅸 | NextJS Dev Shell";
+  description = "aloshy.🅰🅸 | NextJS Supabase Devenv";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -13,7 +13,21 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, devenv, process-compose, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
+    let
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
+    in
+    {
+      metadata = {
+        title = "NextJS Supabase Devenv";
+        url = "https://github.com/aloshy-ai/devenv";
+        authors = [ "aloshy.🅰🅸" ];
+        license = "MIT";
+      };
+    } // (flake-utils.lib.eachSystem systems (system:
       let
         pkgs = import nixpkgs {
           inherit system;
@@ -219,5 +233,5 @@
             exec process-compose up
           '';
         };
-      });
+      }));
 }
