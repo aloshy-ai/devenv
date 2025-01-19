@@ -5,12 +5,13 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     devenv.url = "github:cachix/devenv";
-      process-compose.url = "github:F1bonacc1/process-compose";
+    process-compose.url = "github:F1bonacc1/process-compose";
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
     };
   };
+
   outputs = { self, nixpkgs, flake-utils, ... } @ inputs:
     let
       systems = [
@@ -164,8 +165,8 @@
           env = {
             # Supabase
             NEXT_PUBLIC_SUPABASE_URL = "http://localhost:54321";
-            NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0";
-            SUPABASE_SERVICE_ROLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU";
+            NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn[...]";
+            SUPABASE_SERVICE_ROLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn[...]";
             
             # NextJS
             NEXT_TELEMETRY_DISABLED = "1";
@@ -216,15 +217,15 @@
         };
 
       in {
-  devShells.default = devenv.lib.mkShell {
-    inherit inputs pkgs;
-    modules = [
-      devenvConfig
-      {
-        process-compose = processComposeConfig;
-      }
-    ];
-  };
-};
-      }));
+        devShells.default = devenv.lib.mkShell {
+          inherit inputs pkgs;
+          modules = [
+            devenvConfig
+            {
+              process-compose = processComposeConfig;
+            }
+          ];
+        };
+      };
+    };
 }
