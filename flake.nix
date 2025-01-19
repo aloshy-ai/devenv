@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     devenv.url = "github:cachix/devenv";
-    process-compose.url = "github:Platonic-Systems/process-compose";
+    process-compose.url = "github:Ax2L/process-compose";
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
