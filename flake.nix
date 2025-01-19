@@ -11,8 +11,7 @@
       flake = false;
     };
   };
-
-  outputs = { self, nixpkgs, flake-utils, devenv, process-compose, ... }:
+  outputs = { self, ... } @ inputs:
     let
       systems = [
         "x86_64-linux"
@@ -217,14 +216,15 @@
         };
 
       in {
-        devShell = devenv.lib.mkShell {
-  inherit pkgs;  # Only inherit pkgs
-  modules = [
-    devenvConfig
-    {
-      process-compose = processComposeConfig;
-    }
-  ];
+  devShells.default = devenv.lib.mkShell {
+    inherit inputs pkgs;
+    modules = [
+      devenvConfig
+      {
+        process-compose = processComposeConfig;
+      }
+    ];
+  };
 };
       }));
 }
